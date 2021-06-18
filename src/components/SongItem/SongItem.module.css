@@ -1,0 +1,9 @@
+div.container{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 3.5fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0em 1em;
+}
+.image{
+    width: 6rem;
+}
