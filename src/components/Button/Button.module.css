@@ -1,26 +1,39 @@
+
 button.button {
     border-color: #ffffff;
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-    background: linear-gradient(0deg, rgba(52, 0, 42, 0.8435749299719888) 0%, rgba(207, 0, 160, 0.8407738095238095) 35%, rgba(255, 190, 244, 0.7595413165266106) 100%);
+    background: linear-gradient(0deg, rgba(251, 1, 2, 1) 0%, rgba(255, 44, 116, 1) 100%);
+    overflow: hidden;
 }
 
 button.button:hover {
     border-color: #f456ff;
-    background: linear-gradient(0deg, rgba(36, 0, 29, 1) 0%, rgba(121, 9, 96, 1) 35%, rgba(255, 0, 211, 1) 100%);
+    background: linear-gradient(0deg, rgba(255, 44, 116, 1) 0%, rgba(251, 1, 2, 1) 100%);
 }
 
 button.buttonIcon {
     border-radius: 50%;
-
+    margin: 0 .5rem;
+    padding: 0;
 }
 
 button.big {
     width: 10rem;
-    height: 10em;
+    height: 10rem;
+}
+
+button.medium {
+    width: 8rem;
+    height: 8rem;
+}
+
+button.tiny {
+    width: 5rem;
+    height: 5rem;
 }
 
 .button svg {
-    width: 115%;
+    width: 100%;
     height: 100%;
     fill: #ffffff;
     stroke: #ffffff;

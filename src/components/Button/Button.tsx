@@ -4,11 +4,20 @@ import classNames from 'classnames';
 import { EButtonType, TButtonProps } from './types';
 import Styles from './Button.module.css';
 
-const Button: React.FC<TButtonProps> = ({ onClick, icon, type, children }) => {
+const Button: React.FC<TButtonProps> = ({
+  onClick,
+  icon,
+  type,
+  children,
+  simple,
+}) => {
   const style = classNames(
     Styles.button,
     icon && Styles.buttonIcon,
-    type === EButtonType.big && Styles.big
+    type === EButtonType.big && Styles.big,
+    type === EButtonType.medium && Styles.medium,
+    type === EButtonType.tiny && Styles.tiny,
+    simple && Styles.simple
   );
   return (
     <ButtonBootstrap className={style} variant="primary" onClick={onClick}>
