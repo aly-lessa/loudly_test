@@ -6,18 +6,21 @@ import SongItem from '../SongItem/SongItem';
 import { stateSongsList } from '../../effector/songsList/store';
 import { fetchGetSongsList } from '../../effector/songsList/effects';
 import Container from '../Container/Container';
+import { storeControls } from '../../effector/controls/store';
 
 const SongsList: React.FC = () => {
   useEffect(() => {
     fetchGetSongsList();
   }, []);
-  const list = useStore(stateSongsList);
+  const { songs } = useStore(stateSongsList);
+  const { currentTrack, flagPlay } = useStore(storeControls);
   return (
     <Container>
-      {list.songs.length > 0 ? (
+      {songs.length > 0 ? (
         <ListGroup as="ul">
-          {list.songs.map((song, index) => {
-            return <SongItem key={index} {...song} />;
+          {songs.map((song, index) => {
+            const active = index === currentTrack && flagPlay;
+            return <SongItem key={index} {...song} active={active} />;
           })}
         </ListGroup>
       ) : (
