@@ -16,9 +16,9 @@ export const stateSongsList = domain
   .on(fetchGetSongsList.done, (state, data) => {
     const songList = data.result.map(
       (song: {
-        name: any;
-        artist_name: any;
-        id: any;
+        name: string;
+        artist_name: string;
+        id: string;
         cover_image_path: string;
         music_file_path: string;
       }) => {

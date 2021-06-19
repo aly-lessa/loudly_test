@@ -3,6 +3,7 @@ div.container{
     grid-template-columns: 0.5fr 1fr 3.5fr 0.5fr;
     grid-template-rows: 1fr;
     gap: 0em 1em;
+    cursor: pointer;
 }
 .image{
     width: 6rem;
