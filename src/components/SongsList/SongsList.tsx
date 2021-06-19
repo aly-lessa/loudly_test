@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useStore } from 'effector-react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from '../Spinner/Spinner';
 import SongItem from '../SongItem/SongItem';
 import { stateSongsList } from '../../effector/songsList/store';
 import { fetchGetSongsList } from '../../effector/songsList/effects';
+import Container from '../Container/Container';
 
 const SongsList: React.FC = () => {
   useEffect(() => {
@@ -12,15 +13,17 @@ const SongsList: React.FC = () => {
   }, []);
   const list = useStore(stateSongsList);
   return (
-    <ListGroup as="ul">
+    <Container>
       {list.songs.length > 0 ? (
-        list.songs.map((song, index) => {
-          return <SongItem key={index} {...song} />;
-        })
+        <ListGroup as="ul">
+          {list.songs.map((song, index) => {
+            return <SongItem key={index} {...song} />;
+          })}
+        </ListGroup>
       ) : (
-        <Spinner animation="border" variant="info" />
+        <Spinner />
       )}
-    </ListGroup>
+    </Container>
   );
 };
 
