@@ -1,3 +1,3 @@
 import domain from './domain';
 
-export const playTrack = domain.effect();
+export const playTrack = domain.event();

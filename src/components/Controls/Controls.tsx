@@ -1,29 +1,26 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { useStore } from 'effector-react';
 import Button from 'react-bootstrap/Button';
 import { stateSongsList } from '../../effector/songsList/store';
 import { storeControls } from '../../effector/controls/store';
+import Audio from '../Audio/Audio';
+import { playTrack } from '../../effector/controls/event';
 
 const Controls = () => {
   const { songs } = useStore(stateSongsList);
   const { currentTrack } = useStore(storeControls);
-  const ref: RefObject<any> = React.createRef();
 
   return (
     <div>
       <Button
         variant="primary"
         onClick={() => {
-          ref.current.play();
+          playTrack();
         }}
       >
         play
       </Button>
-      {songs[currentTrack] && (
-        <audio ref={ref} src={songs[currentTrack].musicFile}>
-          <track kind="captions" />
-        </audio>
-      )}
+      {songs[currentTrack] && <Audio />}
     </div>
   );
 };
