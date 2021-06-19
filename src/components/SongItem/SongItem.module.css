@@ -6,6 +6,20 @@ div.container{
     cursor: pointer;
     height: 7.5rem;
 }
+.icons{
+    position: relative;
+}
+.active .image{
+    opacity: 0.75;
+}
+.icons > svg{
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    padding-left: 1rem;
+    fill: rgb(251 251 251 / 92%);
+    stroke: #242424;
+}
 div.active{
     background: rgba(255, 148, 238, 0.05);
 }
