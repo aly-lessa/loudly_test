@@ -5,3 +5,5 @@ export const nextTrack = domain.event();
 export const previousTrack = domain.event();
 export const shuffleTracks = domain.event();
 export const repeatTrack = domain.event();
+
+export const chooseSong = domain.event<number>();

@@ -5,6 +5,7 @@ import {
   previousTrack,
   shuffleTracks,
   repeatTrack,
+  chooseSong,
 } from './event';
 import { stateSongsList } from '../songsList/store';
 
@@ -50,6 +51,14 @@ export const storeControls = domain
         state.currentTrack > 0 ? state.currentTrack - 1 : songs.length - 1,
     };
     return state;
+  })
+  .on(chooseSong, (state, id: number) => {
+    const { currentTrack, flagPlay } = state;
+    return {
+      ...state,
+      currentTrack: id,
+      flagPlay: flagPlay && id === currentTrack ? !flagPlay : true,
+    };
   })
   .on(shuffleTracks, (state) => {
     return { ...state, flagShuffle: !state.flagShuffle };

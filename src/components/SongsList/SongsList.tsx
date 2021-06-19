@@ -20,7 +20,14 @@ const SongsList: React.FC = () => {
         <ListGroup as="ul">
           {songs.map((song, index) => {
             const active = index === currentTrack && flagPlay;
-            return <SongItem key={index} {...song} active={active} />;
+            return (
+              <SongItem
+                key={index}
+                {...song}
+                active={active}
+                idInPlaylist={index}
+              />
+            );
           })}
         </ListGroup>
       ) : (

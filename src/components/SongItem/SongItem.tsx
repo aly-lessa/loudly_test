@@ -7,8 +7,9 @@ import play from '../../images/icon_play.svg';
 import { TSongItem } from '../../effector/songsList/store';
 import { fetchGetSongsList } from '../../effector/controls/effects';
 import ButtonLike from '../ButtonLike/ButtonLike';
+import { chooseSong } from '../../effector/controls/event';
 
-type TProps = TSongItem & { active?: boolean };
+type TProps = TSongItem & { active?: boolean; idInPlaylist: number };
 
 const SongItem: React.FC<TProps> = ({
   name,
@@ -16,10 +17,11 @@ const SongItem: React.FC<TProps> = ({
   imageCover,
   idSong,
   active,
+  idInPlaylist,
 }) => {
   const style = classNames(Styles.container, active && Styles.active);
   return (
-    <Item className={style}>
+    <Item className={style} onClick={() => chooseSong(idInPlaylist)}>
       <div className={Styles.icons}>
         <Image className={Styles.image} src={imageCover} roundedCircle />
         {active && (
