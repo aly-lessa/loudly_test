@@ -8,5 +8,4 @@ export type TButtonProps = {
   onClick: VoidFunction;
   icon?: string;
   type?: EButtonType;
-  simple?: boolean;
 };

@@ -7,6 +7,7 @@ export type TSongItem = {
   idSong: string;
   imageCover: string;
   musicFile: string;
+  musicMimeType: string | null;
 };
 
 export const initialStore: { songs: Array<TSongItem> } = { songs: [] };
@@ -21,6 +22,7 @@ export const stateSongsList = domain
         id: string;
         cover_image_path: string;
         music_file_path: string;
+        music_file_mimetype: string | null;
       }) => {
         return {
           name: song.name,
@@ -28,6 +30,7 @@ export const stateSongsList = domain
           idSong: song.id,
           imageCover: song.cover_image_path,
           musicFile: song.music_file_path,
+          musicMimeType: song.music_file_mimetype,
         };
       }
     );

@@ -1,4 +1,8 @@
 div.container {
-    height: 75rem;
+    height: 77rem;
     text-align: center;
+    border: 1rem solid #ff245d;
+    overflow: hidden auto;
+    border-radius: 4rem;
+    padding: 0;
 }
