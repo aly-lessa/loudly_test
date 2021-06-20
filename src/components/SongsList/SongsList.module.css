@@ -1,0 +1,14 @@
+.items{
+
+}
+.items > div {
+    border: none;
+    border-bottom: 1px solid #dfdfdf;
+    border-top: 1px solid  #dfdfdf;
+}
+.items > div:first-child{
+    border-top: none;
+}
+.items > div:last-child{
+    border-bottom: none;
+}

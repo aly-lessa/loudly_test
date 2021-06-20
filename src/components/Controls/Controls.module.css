@@ -1,17 +1,33 @@
+div.section{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+}
 div.container{
-    margin: 1.5rem auto;
+    margin: 1.5rem auto 0;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 0.5fr 1fr;
+    grid-template-columns: 1.5fr 3fr .3fr 1.02fr;
+    grid-template-rows: .3fr 1fr;
+    background-color: white;
+    box-shadow: 0 -4rem 2rem -4.85rem rgba(0,0,0,0.75);
 }
 div.container > div{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.audio{
+div.container div.audio{
     grid-row: 1;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 5;
     width: 100%;
+    align-items: flex-start;
+}
+.name{
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+div.right{
+
 }

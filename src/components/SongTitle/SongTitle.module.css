@@ -1,0 +1,17 @@
+div.container{
+
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    padding-left: 2rem;
+}
+.image{
+    width: 6rem;
+}
+.name{
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+    color: #282c34;
+    padding: 0 .5rem;
+}

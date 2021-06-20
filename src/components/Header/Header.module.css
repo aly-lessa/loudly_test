@@ -1,0 +1,27 @@
+.section{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+div.container{
+    margin: 0rem auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: #fff;
+    box-shadow: 0em 1rem 2rem -2em rgba(0, 0, 0, 0.75);
+    padding: .2rem 2.5rem
+}
+.container > svg{
+    fill: rgba(255, 44, 116, 1);
+    width: 9.5rem;
+    height: 8rem;
+}
+.enter{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 1px rgb(150 150 150);
+}

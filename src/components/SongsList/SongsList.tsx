@@ -7,6 +7,7 @@ import { stateSongsList } from '../../effector/songsList/store';
 import { fetchGetSongsList } from '../../effector/songsList/effects';
 import Container from '../Container/Container';
 import { storeControls } from '../../effector/controls/store';
+import Styles from './SongsList.module.css';
 
 const SongsList: React.FC = () => {
   useEffect(() => {
@@ -14,10 +15,11 @@ const SongsList: React.FC = () => {
   }, []);
   const { songs } = useStore(stateSongsList);
   const { currentTrack, flagPlay } = useStore(storeControls);
+
   return (
     <Container>
       {songs.length > 0 ? (
-        <ListGroup as="ul">
+        <ListGroup className={Styles.items} as="ul">
           {songs.map((song, index) => {
             const active = index === currentTrack && flagPlay;
             return (
