@@ -13,7 +13,7 @@ import {
   shuffleTracks,
   repeatAllTracks,
 } from '../../effector/controls/event';
-import { fetchGetSongsList } from '../../effector/controls/effects';
+import { fetchLikeSong } from '../../effector/controls/effects';
 import play from '../../images/play.svg';
 import pause from '../../images/pause.svg';
 import shuffle from '../../images/shuffle.svg';
@@ -78,7 +78,10 @@ const Controls = () => {
         <div className={Styles.right}>
           <ButtonLike
             onClick={() => {
-              fetchGetSongsList(songs[currentTrack].idSong);
+              fetchLikeSong({
+                id: songs[currentTrack].idSong,
+                idInSongsList: currentTrack,
+              });
             }}
           />
         </div>

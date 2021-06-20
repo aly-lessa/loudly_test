@@ -1,6 +1,6 @@
 import domain from './domain';
 import { sendLikeSong } from '../../api/requests';
 
-export const fetchGetSongsList = domain.createEffect((id: string) =>
-  sendLikeSong(id)
+export const fetchLikeSong = domain.createEffect(
+  (params: { id: string; idInSongsList: number }) => sendLikeSong(params)
 );

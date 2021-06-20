@@ -1,16 +1,19 @@
 .button{
-width: 3rem;
-    height: 3rem;
-    cursor: pointer;
+    width: 3rem;
+    height: 6rem;
+    border: none;
+    background: none;
+    padding: 0;
 }
 .button svg{
     width: 100%;
     height: 100%;
-    fill: #f78ba6;
+    fill: #ffc4d6;
+
 }
 .button:hover svg{
-    fill: #ff245d;
+    fill: #ff628a;
 }
 .active svg{
-    fill: #fe235b;
+    fill:  #ff2c74
 }

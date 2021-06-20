@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
+import classNames from 'classnames';
 import like from '../../images/like.svg';
 import Styles from './ButtonLike.module.css';
 
-const ButtonLike: React.FC<{ onClick: VoidFunction }> = ({ onClick }) => {
+type TProps = {
+  onClick: (e: SyntheticEvent) => void;
+  active?: boolean;
+};
+const ButtonLike: React.FC<TProps> = ({ onClick, active }) => {
+  const style = classNames(Styles.button, active && Styles.active);
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-    <div className={Styles.button} onClick={onClick}>
+    <button type="button" className={style} onClick={onClick}>
       <svg xmlns="http://www.w3.org/2000/svg">
         <use href={`${like}#button_like`} />
       </svg>
-    </div>
+    </button>
   );
 };
 export default ButtonLike;

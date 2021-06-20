@@ -15,13 +15,12 @@ export const getSongsList = () =>
       return error;
     });
 
-export const sendLikeSong = (id: string) =>
+export const sendLikeSong = (params: { id: string; idInSongsList: number }) =>
   axios
     .post('interact/like?apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8', {
-      id,
+      id: params.id,
     })
     .then(function (response) {
-      console.log(response);
       return response.data;
     })
     .catch(function (error) {

@@ -1,5 +1,6 @@
 import domain from './domain';
 import { fetchGetSongsList } from './effects';
+import { fetchLikeSong } from '../controls/effects';
 
 export type TSongItem = {
   name: string;
@@ -8,6 +9,7 @@ export type TSongItem = {
   imageCover: string;
   musicFile: string;
   musicMimeType: string | null;
+  isLiked?: boolean;
 };
 
 export const initialStore: { songs: Array<TSongItem> } = { songs: [] };
@@ -35,8 +37,10 @@ export const stateSongsList = domain
       }
     );
     return { songs: songList };
+  })
+  .on(fetchLikeSong.done, (state, data) => {
+    const { idInSongsList } = data.params;
+    const newState = state;
+    newState.songs[idInSongsList].isLiked = !state.songs[idInSongsList].isLiked;
+    return { ...state, newState };
   });
-
-fetchGetSongsList.done.watch(({ result }) => {
-  console.log('fetchGetSongsList.done.watch: ', result);
-});
