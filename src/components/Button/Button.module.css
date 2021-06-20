@@ -4,6 +4,7 @@
     overflow: hidden;
     background: rgba(255, 44, 116, 1) ;
     border: 1px solid #ffffff;
+    position: relative;
 }
 
 .button:hover {
@@ -44,4 +45,20 @@
     fill: #ffffff;
     stroke: #ffffff;
 
+}
+.text{
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    margin: auto auto;
+    font-size: 1rem;
+    padding: 0 .45rem;
+    color: #5b2c3d;
+    background: #fff;
+    border-radius: 50%;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+
+}
+.active{
+    background: #ffc4d6;
 }

@@ -26,7 +26,8 @@ import SongTitle from '../SongTitle/SongTitle';
 
 const Controls = () => {
   const { songs } = useStore(stateSongsList);
-  const { currentTrack, flagPlay, flagRepeat } = useStore(storeControls);
+  const { currentTrack, flagPlay, flagRepeat, flagShuffle } =
+    useStore(storeControls);
   const [flagRepeatOne, setFlagRepeatOne] = useState(false);
 
   const onClickButtonRepeat = () => {
@@ -52,7 +53,10 @@ const Controls = () => {
             onClick={onClickButtonRepeat}
             icon={`${repeat}#button_repeat`}
             type={EButtonType.tiny}
-          />
+            active={flagRepeat || flagRepeatOne}
+          >
+            {flagRepeatOne && !flagRepeat && 1}
+          </Button>
           <Button
             onClick={previousTrack}
             icon={`${previous}#button_previous`}
@@ -72,6 +76,7 @@ const Controls = () => {
             onClick={shuffleTracks}
             icon={`${shuffle}#button_shuffle`}
             type={EButtonType.tiny}
+            active={flagShuffle}
           />
         </div>
         <div />
