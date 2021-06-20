@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStore } from 'effector-react';
 import Container from 'react-bootstrap/Container';
 import Button from '../Button/Button';
@@ -11,7 +11,7 @@ import {
   nextTrack,
   previousTrack,
   shuffleTracks,
-  repeatTrack,
+  repeatAllTracks,
 } from '../../effector/controls/event';
 import { fetchGetSongsList } from '../../effector/controls/effects';
 import play from '../../images/play.svg';
@@ -25,14 +25,29 @@ import ButtonLike from '../ButtonLike/ButtonLike';
 
 const Controls = () => {
   const { songs } = useStore(stateSongsList);
-  const { currentTrack, flagPlay } = useStore(storeControls);
+  const { currentTrack, flagPlay, flagRepeat } = useStore(storeControls);
+  const [flagRepeatOne, setFlagRepeatOne] = useState(false);
+
+  const onClickButtonRepeat = () => {
+    if (!flagRepeatOne) {
+      setFlagRepeatOne(true);
+    } else {
+      if (flagRepeat) {
+        setFlagRepeatOne(false);
+      }
+      repeatAllTracks();
+    }
+  };
+
   return (
     <Container className={Styles.container}>
-      <div className={Styles.audio}>{songs[currentTrack] && <Audio />}</div>
+      <div className={Styles.audio}>
+        {songs[currentTrack] && <Audio flagRepeatOne={flagRepeatOne} />}
+      </div>
       <div />
       <div className={Styles.center}>
         <Button
-          onClick={repeatTrack}
+          onClick={onClickButtonRepeat}
           icon={`${repeat}#button_repeat`}
           type={EButtonType.tiny}
         />

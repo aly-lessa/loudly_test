@@ -3,14 +3,15 @@ import { useStore } from 'effector-react';
 import { stateSongsList } from '../../effector/songsList/store';
 import { storeControls } from '../../effector/controls/store';
 import shuffle from '../../utils/shuffle';
-import { nextTrack } from '../../effector/controls/event';
+import { nextTrack, endedTrack } from '../../effector/controls/event';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Styles from './Styles.module.css';
 
-const Audio = () => {
+const Audio: React.FC<{ flagRepeatOne?: boolean }> = ({ flagRepeatOne }) => {
   const { songs } = useStore(stateSongsList);
   const [playlist, setPlaylist] = useState(songs);
   const [time, setTime] = useState({ start: 0, end: 0 });
+
   const { currentTrack, flagPlay, flagShuffle, flagRepeat } =
     useStore(storeControls);
   const ref: RefObject<any> = React.createRef();
@@ -28,9 +29,7 @@ const Audio = () => {
       setPlaylist(shuffle(playlist));
     }
   }, [flagPlay, flagShuffle, ref, playlist, flagRepeat, currentTrack]);
-  const onEnded = () => {
-    nextTrack();
-  };
+
   return (
     <div className={Styles.container}>
       <ProgressBar {...time} />
@@ -41,9 +40,10 @@ const Audio = () => {
         onPlaying={() =>
           setTime({ end: ref.current.duration, start: time.start })
         }
-        onEnded={onEnded}
+        onEnded={() => endedTrack()}
         ref={ref}
         src={playlist[currentTrack].musicFile}
+        loop={flagRepeatOne && !flagRepeat}
       >
         <track kind="captions" />
       </audio>

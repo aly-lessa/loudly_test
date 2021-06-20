@@ -4,16 +4,11 @@ import {
   nextTrack,
   previousTrack,
   shuffleTracks,
-  repeatTrack,
+  repeatAllTracks,
   chooseSong,
+  endedTrack,
 } from './event';
 import { stateSongsList } from '../songsList/store';
-
-export enum ERepeats {
-  noRepeat = 'noRepeat',
-  repeatOne = 'repeatOne',
-  repeatAll = 'repeatAll',
-}
 
 export type TControls = {
   currentTrack: number;
@@ -36,12 +31,19 @@ export const storeControls = domain
   })
   .on(nextTrack, (state) => {
     const { songs } = stateSongsList.getState();
+    const { currentTrack, flagRepeat } = state;
+    if (flagRepeat) {
+      return {
+        ...state,
+        currentTrack: currentTrack < songs.length - 1 ? currentTrack + 1 : 0,
+      };
+    }
     return {
       ...state,
       currentTrack:
-        state.currentTrack < songs.length - 1 ? state.currentTrack + 1 : 0,
+        currentTrack < songs.length - 1 ? currentTrack + 1 : songs.length - 1,
+      flagPlay: false,
     };
-    return state;
   })
   .on(previousTrack, (state) => {
     const { songs } = stateSongsList.getState();
@@ -60,9 +62,12 @@ export const storeControls = domain
       flagPlay: flagPlay && id === currentTrack ? !flagPlay : true,
     };
   })
+  .on(endedTrack, () => {
+    nextTrack();
+  })
   .on(shuffleTracks, (state) => {
     return { ...state, flagShuffle: !state.flagShuffle };
   })
-  .on(repeatTrack, (state) => {
-    return { ...state, flagPlay: !state.flagPlay };
+  .on(repeatAllTracks, (state) => {
+    return { ...state, flagRepeat: !state.flagRepeat };
   });
