@@ -1,11 +1,17 @@
 div.container{
     margin: 1.5rem auto;
     display: grid;
-    grid-template-columns: 1fr 3.5fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
 }
 div.container > div{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.audio{
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
 }

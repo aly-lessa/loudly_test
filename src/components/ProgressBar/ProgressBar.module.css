@@ -1,0 +1,32 @@
+.container {
+    position: relative;
+    border-color: #ffffff;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    overflow: hidden;
+    border-radius: 2rem;
+    width: 100%;
+}
+
+.back {
+    background: linear-gradient(0deg, rgba(251, 1, 2, 1) 0%, rgba(255, 44, 116, 1) 100%);
+    width: 100%;
+    height: 1.3rem;
+}
+
+.up {
+    background: #ffffff;
+    width: 100%;
+    height: 1.3rem;
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.restTime{
+    position: absolute;
+    top:0;
+    right: 1rem;
+    line-height: 1.3rem;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px rgb(105 105 105);
+    color: #383838;
+}

@@ -28,7 +28,8 @@ const Controls = () => {
   const { currentTrack, flagPlay } = useStore(storeControls);
   return (
     <Container className={Styles.container}>
-      <div>{songs[currentTrack] && <Audio />}</div>
+      <div className={Styles.audio}>{songs[currentTrack] && <Audio />}</div>
+      <div />
       <div className={Styles.center}>
         <Button
           onClick={repeatTrack}
