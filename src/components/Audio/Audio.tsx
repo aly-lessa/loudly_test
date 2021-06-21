@@ -31,12 +31,14 @@ const Audio: React.FC<{ flagRepeatOne?: boolean }> = ({ flagRepeatOne }) => {
   }, [flagPlay, flagShuffle, ref, playlist, flagRepeat, currentTrack]);
   const onTimeUpdate = () => {
     if (ref.current.canPlayType(playlist[currentTrack].musicMimeType)) {
-      setTime({ start: ref.current.currentTime, end: time.end });
+      if (ref.current.currentTime - time.start > 0.25) {
+        setTime({ start: ref.current.currentTime, end: time.end });
+      }
     }
   };
   const onPlaying = () => {
     if (ref.current.canPlayType(playlist[currentTrack].musicMimeType)) {
-      setTime({ end: ref.current.duration, start: time.start });
+      setTime({ end: ref.current.duration, start: 0 });
     }
   };
   return (

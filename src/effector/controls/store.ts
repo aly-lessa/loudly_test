@@ -31,18 +31,18 @@ export const storeControls = domain
   })
   .on(nextTrack, (state) => {
     const { songs } = stateSongsList.getState();
-    const { currentTrack, flagRepeat } = state;
-    if (flagRepeat) {
-      return {
-        ...state,
-        currentTrack: currentTrack < songs.length - 1 ? currentTrack + 1 : 0,
-      };
-    }
+    const { currentTrack, flagRepeat, flagPlay } = state;
+    const isArrayEnd = currentTrack < songs.length - 1;
+    const lastTrack = flagRepeat ? 0 : songs.length - 1;
+    const nextCurrentTrack = isArrayEnd ? currentTrack + 1 : lastTrack;
     return {
       ...state,
-      currentTrack:
-        currentTrack < songs.length - 1 ? currentTrack + 1 : songs.length - 1,
-      flagPlay: false,
+      currentTrack: nextCurrentTrack,
+      flagPlay:
+        (!isArrayEnd && !flagRepeat) ||
+        (!isArrayEnd && !songs[nextCurrentTrack].musicMimeType)
+          ? false
+          : flagPlay,
     };
   })
   .on(previousTrack, (state) => {
